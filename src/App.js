@@ -10,17 +10,18 @@ class App extends Component {
   allAdd = (a) => {//добавление в наши строку символа
     let num = String(this.state.numbers);
     const size = num.length;
-    if(a == "D"){
-      if(size >0 ){
-        num = num.substring(0,size-1) ;
+
+    if(a === "D"){
+      if(size > 0 ){
+        num = num.substring(0, size-1) ;
       }
     }
-    else if (a == "C"){
+    else if (a === "C"){
       num = "";
     }
     else if(size > 0){
-      if (a == "+" || a == "-" || a == "*" || a == "/"){
-        if(num[size - 1] == "+"  || num[size - 1] == "-" || num[size - 1] == "*" || num[size - 1] == "/"){
+      if (a === "+" || a === "-" || a === "*" || a === "/"){
+        if(num[size - 1] === "+"  || num[size - 1] === "-" || num[size - 1] === "*" || num[size - 1] === "/"){
               num = num.substring(0, size-1);
               num += a;
         }else {
@@ -30,7 +31,7 @@ class App extends Component {
       else {
           num += a;
         }
-    } else if(size == 0 && +a >= 0){
+    } else if(size === 0 && +a >= 0){
         num += a;
     }
     this.setState({
@@ -38,7 +39,7 @@ class App extends Component {
     });
   }
 
-  prov = (stacNum,stacSign, sign) => {//проверка с свериванием по приоритетности
+  prov = (stacNum, stacSign, sign) => {//проверка с свериванием по приоритетности
     const size = stacNum.length;
     if(size > 1 ){
       let signStac = stacSign[stacSign.length - 1];
@@ -46,13 +47,14 @@ class App extends Component {
         const c = stacNum.pop();
         const b = stacNum.pop();
         let rez = 0;
-        if(signStac[1] == "+"){
+
+        if(signStac[1] === "+"){
           rez = (c + b);
-        }else if(signStac[1] == "-"){
+        }else if(signStac[1] === "-"){
           rez = (b - c);
-        }else if(signStac[1] == "/"){
+        }else if(signStac[1] === "/"){
           rez = (b / c);
-        }else if(signStac[1] == "*"){
+        }else if(signStac[1] === "*"){
           rez = (c * b);
         }
 
@@ -72,43 +74,37 @@ class App extends Component {
     let stacNum = [];
     let stacSign = [];
     let size = this.state.numbers.length;
-
-    const a = this.state.numbers;
-    if (a[size-1] == "+" || a[size-1] == "-" || a[size-1] == "*" || a[size-1] == "/"){
-      a = a.substring(0,size-1);
-      size-=1;
+    let ourStr = this.state.numbers;
+    const lastEl = ourStr[size-1];
+    if (lastEl === "+" || lastEl === "-" || lastEl === "*" || lastEl === "/"){
+      ourStr = ourStr.substring(0, size-1);
+      size -= 1;
     }
 
     let inter = 0;
-    for( var i in a ){
-        const k = a[i];
-        if(k == "+" || k == "-" || k == "/" || k == "*"){
+    for( var i in ourStr ){
+        const nowEl = ourStr[i];
+        if(nowEl === "+" || nowEl === "-" || nowEl === "/" || nowEl === "*"){
           stacNum.push(inter);
           inter = 0;
 
-          if(k == "+"){
-            this.prov(stacNum, stacSign,"1+");
-            stacSign.push("1+");
-          }else if(k == "-"){
-            this.prov(stacNum, stacSign,"1-");
-            stacSign.push("1-");
-          }else if(k == "/"){
-            this.prov(stacNum, stacSign,"2/");
-            stacSign.push("2/");
-          }else if(k == "*"){
-            this.prov(stacNum, stacSign,"2*");
-              stacSign.push("2*");
+          if(nowEl === "+" || nowEl === "-"){
+            this.prov(stacNum, stacSign, "1" + nowEl);
+            stacSign.push("1" + nowEl);
+          }else if(nowEl === "/" || nowEl === "*"){
+            this.prov(stacNum, stacSign, "2" + nowEl);
+            stacSign.push("2" + nowEl);
           }
         } else {
         inter *= 10;
-        inter += ( +k);
+        inter += ( +nowEl);
       }
 
-        if(i==a.length-1){
+        if(+i === ourStr.length-1){
             stacNum.push(inter);
       }
     }
-    this.prov(stacNum, stacSign,"1+");
+    this.prov(stacNum, stacSign, "1+");
     var numb = stacNum.pop();
     this.setState({
       numbers: numb

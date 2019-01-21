@@ -27,7 +27,7 @@ class Calc extends Component {
             <Button className="buttonM" onClick={()=>this.props.butt("4")}>4</Button>
             <Button className="buttonM" onClick={()=>this.props.butt("5")}>5</Button>
             <Button className="buttonM" onClick={()=>this.props.butt("6")}>6</Button>
-            <Button className="buttonM" onClick={()=>this.props.butt("+")}>-</Button>
+            <Button className="buttonM" onClick={()=>this.props.butt("-")}>-</Button>
           </div>
           <div>
             <Button className="buttonM" onClick={()=>this.props.butt("1")}>1</Button>
