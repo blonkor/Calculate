@@ -1,0 +1,30 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #2a6bb1;
+}
+.main{
+  height: 45%;
+  box-shadow: 0px 2px 80px -20px rgba(0,0,0,0.5);
+  width: 35%;
+  margin: 0 auto;
+  font-size: calc(10px + 2vmin);
+}
+.form{
+  height:60%;
+  text-align:center;
+  align:center;
+}
+.buttonT{
+  width: 21%;
+}
+.buttonM{
+  width: 24%;
+}
+.buttonB{
+  width:42%;
+}
+.text{
+  width: 60%;
+}
