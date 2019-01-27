@@ -1,0 +1,39 @@
+ .wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #1565c0;
+}
+.main{
+  height:50%;
+  box-shadow: 0px 2px 80px -20px rgba(0,0,0,0.5);
+  width: 35%;
+  margin: 0 auto;
+  font-size: calc(10px + 2vmin);
+}
+
+.form{
+  text-align:center;
+}
+.btn{
+  
+  margin: 1%;
+  width: 21%;
+}
+.inputtext{
+  text-align: right;
+  margin: 0 auto;
+  display: block;
+  width: 80%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
